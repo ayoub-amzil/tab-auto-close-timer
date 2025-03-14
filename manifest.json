@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Tab Auto-Close Timer",
+  "version": "1.1.0",
+  "description": "Tab Auto-Close Timer is a browser extension that helps you manage your open tabs efficiently. It detects websites in real time and allows you to set custom countdown timers for each tab. Once the timer reaches zero, the tab automatically closes—keeping your browsing clutter-free.",
+  "permissions": ["tabs", "storage"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Open Dashboard"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "128": "icons/icon128.png"
+  }
+}

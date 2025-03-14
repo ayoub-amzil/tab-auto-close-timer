@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Detector Dashboard</title>
+  <link rel="icon" type="image/png" href="/icons/icon48.png">
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" type="text/css" href="datatables.min.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #F7F7F7;
+      color: black;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background-color: #121212;
+      color: #F7F7F7;
+    }
+    /* Dark mode styles for the table */
+    .dark-mode #websiteTable {
+      background-color: #1e1e1e;
+      color: #F7F7F7;
+    }
+    .dark-mode #websiteTable th,
+    .dark-mode #websiteTable td {
+      border-color: #333;
+    }
+    .dark-mode #websiteTable tbody tr:hover {
+      background-color: #333;
+    }
+    /* Dark mode styles for buttons and inputs */
+    .dark-mode button {
+      background-color: #FFB22C;
+      color: white;
+    }
+    .dark-mode button:disabled {
+      background-color: #555;
+    }
+    .dark-mode input[type="number"] {
+      background-color: #333;
+      color: white;
+      border-color: #555;
+    }
+    /* Custom Square Toggle Switch */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 4px;
+      transition: 0.4s;
+    }
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      border-radius: 3px;
+      transition: 0.4s;
+    }
+    input:checked + .toggle-slider {
+      background-color: #FFB22C;
+    }
+    input:checked + .toggle-slider:before {
+      transform: translateX(20px);
+    }
+    /* Manual Refresh Button */
+    #refreshButton {
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      background-color: #FFB22C;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #refreshButton:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    /* Dark Mode Button */
+    #darkModeButton {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px;
+      background-color: #FFB22C;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+    #darkModeButton i {
+      font-size: 20px;
+    }
+    /* Refresh Setting */
+    .refresh-setting{
+      display: flex;
+      justify-content: space-between;
+      align-items: normal;
+      align-content: normal;
+    }
+    .refresh-setting-info{
+      font-size: smaller;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dark Mode Button -->
+  <button id="darkModeButton">
+    <i class="fas fa-moon"></i> <!-- Moon icon for dark mode -->
+  </button>
+
+  <h1>Website Detector Dashboard</h1>
+  <div class="refresh-setting">
+    <!-- Manual Refresh Button -->
+    <div>
+      <button id="refreshButton">Refresh Table</button>
+    </div>
+    <!-- Auto-Refresh Switch -->
+    <div>
+      <p>
+        <label for="autoRefreshToggle">Auto-Refresh:</label>
+        <label class="toggle-switch">
+          <input type="checkbox" id="autoRefreshToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </p>
+      <p>
+        <span class="refresh-setting-info"><i class="fa-solid fa-circle-info"></i> For every 10 second.</span>
+      </p>
+    </div>
+  </div>
+  <!-- Table -->
+  <table id="websiteTable" class="display" style="width:100%">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>URL</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <!-- DataTables JS -->
+  <script src="datatables.min.js"></script>
+  <!-- Dashboard Script -->
+  <script src="dashboard.js"></script>
+</body>
+</html>
